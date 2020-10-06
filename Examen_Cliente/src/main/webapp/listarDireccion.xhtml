@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Examen : Aplicación Rest</title>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous"></link>
+</h:head>
+<h:body>
+	<h:messages id="mensaje" autoUpdate="false"/>
+	<div class="row">
+		<div class="container">
+			<header>
+				<nav class="navbar navbar-expand-md navbar-dark"
+					style="background-color: green">
+					<ul class="navbar-nav">
+						<li></li>
+					</ul>
+				</nav>
+			</header>
+			<div class="container">
+				<h2 align="center">UNIVERSIDAD CENTRAL DEL ECUADOR</h2>
+				<h2 align="center">INGENIERÍA INFORMÁTICA</h2>
+				<h2 align="center">PROGRAMACIÓN DISTRIBUIDA</h2>
+				<h2 align="center">Examen</h2>
+			</div>
+			<h:panelGrid columns="1" cellpadding="5" cellspacing="1" border="1">
+				<h:form>
+					<h3 align="center">
+						<h:commandButton value="Añadir Direccion Nueva" class="btn btn-success" 
+							action="crearDireccion?faces-redirect=true" />
+					</h3>
+					
+				</h:form>
+			</h:panelGrid>
+			<br /> 
+			<div class="card">
+				<h2 align="center">LISTA DE DIRECCIONES</h2>
+			<h:form>
+			<h:outputLabel>Ingrese el ID: </h:outputLabel>
+                <h:inputText id="identification" value="#{direccionControlador.idDireccion}" required="true"/>
+                <h:message for="identification" /> 
+           		<h:commandButton value="Recuperar" id="btnRecuperarf" action="#{direccionControlador.listarId()}" update="lista" class="btn btn-outline-success" ajax="false" /> 
+           		<h:commandButton value="Listar Todos" id="btnRecuperarff" action="#{direccionControlador.listarDireccion()}" update="lista" class="btn btn-outline-success"  />
+           		</h:form>
+           		<h:form> 
+				<h3 align="center">
+					<h:dataTable style="float: inherit"
+						value="#{direccionControlador.listaDireccion}" var="element" id="lista" cellspacing="1"
+						cellpadding="1" border="1">
+						<h:column>
+							<f:facet name="header">Identificador</f:facet>
+							<h:outputText value="#{element.id}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Descripción:</f:facet>
+							<h:outputText value="#{element.descripcion}" />
+						</h:column>
+												
+						<h:column>
+							<f:facet name="header">Editar Direccion</f:facet>
+							<h:commandButton value="Editar" class="btn btn-outline-warning"
+								action="#{direccionControlador.buscarDireccion(element)}" />
+							</h:column>
+						<h:column>
+							<f:facet name="header">Eliminar Direccion</f:facet>
+							<h:commandButton value="Eliminar" class="btn btn-outline-danger"
+								action="#{direccionControlador.eliminarDireccion(element.id)}" />
+						</h:column>
+					</h:dataTable>
+				</h3>
+				<br />
+				</h:form>
+				<h:panelGrid columns="1" cellpadding="5" cellspacing="1" border="1">
+					<h:form>
+						<h3 align="center">
+							<h:commandButton value="Volver a Inicio" class="btn btn-dark"
+								action="index?faces-redirect=true" />
+							<h:commandButton value="Gestionar Personas" class="btn btn-success" 
+								action="#{personasControlador.nuevaLista}"/>
+						</h3>
+					</h:form>
+				</h:panelGrid>
+			
+			
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

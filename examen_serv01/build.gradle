@@ -1,0 +1,46 @@
+plugins {
+    id 'java-library'
+    id "it.gianluz.capsule" version "1.0.3"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'io.helidon', name: 'helidon-bom', version: '1.4.0', ext: 'pom'
+	compile group: 'io.helidon.microprofile.bundles', name: 'helidon-microprofile', version: '1.4.0'
+
+///////////DB
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.8'
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.8.Final'
+///para serializar pojos con JSON
+	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version: '2.30'
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	
+	
+	
+	// https://mvnrepository.com/artifact/org.eclipse.microprofile.rest.client/microprofile-rest-client-api
+	compile group: 'org.eclipse.microprofile.rest.client', name: 'microprofile-rest-client-api', version: '1.4.1'
+	// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+	
+	
+	
+	
+
+}
+
+task copyLibs(type:Copy){
+	from configurations.runtime
+	into 'build/libs/libs'
+}
+
+task ejecutable(type:FatCapsule){
+	group="build"
+	applicationClass 'io.helidon.microprofile.server.Main'
+	///Esto crea un directorio para cada proyecto con el nombre, para evitar confictos con otros servicios
+	capsuleManifest {
+		applicationName='App01'
+	}
+}

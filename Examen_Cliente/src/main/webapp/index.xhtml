@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Examen : Aplicación Rest</title>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous"></link>
+</h:head>
+<h:body>
+<h:form>
+			<header>
+                <nav class="navbar navbar-expand-md navbar-dark" style="background-color: tomato">
+                    <div>
+                        
+                    </div>
+
+                    <ul class="navbar-nav">
+                        
+                    </ul>
+                </nav>
+            </header>
+	<div class="container col-md-5">
+                <div class="card">
+                    <div class="card-body">
+		
+			
+			<div class="container">
+				<h2 align="center">UNIVERSIDAD CENTRAL DEL ECUADOR</h2>
+				<h2 align="center">INGENIERÍA INFORMÁTICA</h2>
+				<h2 align="center">PROGRAMACIÓN DISTRIBUIDA</h2>
+				<h2 align="center">Examen</h2>
+				
+			</div>
+			<br /> <br />
+			
+
+				<h2 align="center">
+					<h:commandButton value="Manejo de Direcciones" class="btn btn-warning"
+						action="#{direccionControlador.listarDireccion}" />
+				</h2>
+				<h2 align="center">
+					<h:commandButton value="Manejo de Personas" class="btn btn-warning"
+						action="#{personasControlador.nuevaLista}" />
+				</h2>
+				
+				<p align="center">
+					<img src="img/uce.jpg" width="200x211" />
+					
+				</p>
+				    
+                    </div>
+                </div>
+            </div>
+			</h:form>
+</h:body>
+</html>

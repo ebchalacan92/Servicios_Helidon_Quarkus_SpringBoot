@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+    id 'io.quarkus'
+}
+
+repositories {
+   jcenter()
+}
+
+dependencies {
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
+    implementation 'io.quarkus:quarkus-resteasy-jackson'
+    implementation 'io.quarkus:quarkus-agroal'
+    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy'
+    
+   
+
+}
+
+group 'com.distribuida'
+version '1.0.0-SNAPSHOT'
+task stage(dependsOn: ['quarkusBuild', 'clean'])
+build.mustRunAfter clean

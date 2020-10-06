@@ -1,0 +1,43 @@
+plugins {
+   id 'java-library'
+   id 'war'
+   id 'eclipse-wtp'
+}
+
+repositories {
+    
+    jcenter()
+}
+
+dependencies {
+   
+	
+	 compile group: 'io.helidon', name: 'helidon-bom', version: '1.4.0', ext: 'pom'
+	 compile group: 'io.helidon.microprofile.bundles', name: 'helidon-microprofile', version: '1.4.0'
+	 compile group: 'org.microprofile-ext.config-ext', name: 'configsource-consul', version: '1.0.9'
+	// https://mvnrepository.com/artifact/io.helidon.media.jsonb/helidon-media-jsonb-server
+	 compile group: 'io.helidon.media.jsonb', name: 'helidon-media-jsonb-server', version: '1.4.7'
+	// https://mvnrepository.com/artifact/io.helidon.webserver/helidon-webserver
+	 compile group: 'io.helidon.webserver', name: 'helidon-webserver', version: '2.0.2'
+	
+	
+	
+
+///para serializar pojos con JSON
+	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version: '2.30'
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	
+	
+	
+	// https://mvnrepository.com/artifact/org.eclipse.microprofile.rest.client/microprofile-rest-client-api
+	compile group: 'org.eclipse.microprofile.rest.client', name: 'microprofile-rest-client-api', version: '1.4.1'
+	// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+	
+	
+	
+	
+}
+task stage(dependsOn: ['build', 'clean'])
+	build.mustRunAfter clean
+

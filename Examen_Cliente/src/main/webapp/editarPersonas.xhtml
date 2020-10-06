@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Examen : Aplicación Rest</title>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous"></link>
+</h:head>
+<h:body>
+	<h:form>
+		<header>
+			<nav class="navbar navbar-expand-md navbar-dark"
+				style="background-color: green">
+				<div></div>
+
+				<ul class="navbar-nav">
+
+				</ul>
+			</nav>
+		</header>
+		<div class="container col-md-5">
+			<div class="card">
+				<div class="card-body">
+
+					<div class="container">
+						<h2 align="center">UNIVERSIDAD CENTRAL DEL ECUADOR</h2>
+						<h2 align="center">INGENIERÍA INFORMÁTICA</h2>
+						<h2 align="center">PROGRAMACIÓN DISTRIBUIDA</h2>
+						<h2 align="center">Examen</h2>
+					</div>
+					<br /> <br />
+					<div class="card">
+						<h2 align="center">EDITAR PERSONAS</h2>
+
+						<h:panelGrid columns="2" cellpadding="5" cellspacing="1"
+							border="1">
+							<h:outputText value="Id de la Dirección : " />
+							<h:inputText value="#{personasControlador.personas.tipoDireccion}" />
+							<h:outputText value="Nombre : " />
+							<h:inputText value="#{personasControlador.personas.nombre}" />
+							<h:outputText value="Cédula : " />
+							<h:inputText value="#{personasControlador.personas.cedula}" />
+							<h:outputText value="Dirección : " />
+							<h:inputText value="#{personasControlador.personas.direccion}" />
+
+						</h:panelGrid>
+						<h:commandButton value="Guardar" class="btn btn-outline-success"
+							action="#{personasControlador.editarPersonas()}" />
+						<h:commandButton value="Cancelar"
+							action="listarPersonas?faces-redirect=true"
+							class="btn btn-outline-danger" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>
